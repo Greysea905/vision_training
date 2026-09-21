@@ -1,0 +1,32 @@
+# ---- 构建产物 ----
+/build/
+cmake-build-*/
+
+# ---- C++ 编译中间文件 ----
+*.o
+*.obj
+*.a
+*.so
+*.dylib
+*.exe
+
+# ---- IDE / 编辑器 ----
+.vscode/
+.idea/
+.claude/
+CMakeLists.txt.user
+
+# ---- Python ----
+__pycache__/
+*.pyc
+
+# ---- 生成的大体积结果文件（图/视频），可由代码重新生成 ----
+# 进度提交先忽略；最终提交如需入库，删掉这几行即可（或改用邮件附件）
+result/**/*.png
+result/**/*.jpg
+result/**/*.jpeg
+result/**/*.mp4
+result/**/*.avi
+
+# ---- 素材视频：如需提交请取消注释（或改用邮件附件） ----
+# resources/*.mp4

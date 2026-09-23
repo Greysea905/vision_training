@@ -97,9 +97,6 @@ void step4_contour(const Mat& best_mask, const Mat& img) {
 
     Mat result = img.clone();            // 画在原图副本上，不污染原图
 
-    // ===== 待补：画轮廓线 + 标面积 =====
-    // 注意：drawContours 单画某条轮廓需要下标 i，所以把下面这个范围 for
-    //       改成下标循环：for (size_t i = 0; i < contours.size(); ++i)
     for (size_t i = 0; i < contours.size(); ++i) {
         double area = contourArea(contours[i]);
         if (area > MIN_CONTOUR_AREA) {
@@ -107,10 +104,7 @@ void step4_contour(const Mat& best_mask, const Mat& img) {
 
             Rect bbox = boundingRect(contours[i]);
             rectangle(result, bbox, Scalar(255, 0, 0), 5);
-            // TODO-2 标面积（黄色，转字符串）：
-            //   double area = contourArea(contours[i]);
-            //   putText(result, to_string((int)area), Point(bbox.x, bbox.y - 5),
-            //           FONT_HERSHEY_SIMPLEX, 1.5, Scalar(0, 255, 255), 2);
+            
             string area_str = "Area: " + to_string(static_cast<int>(area));
             Point text_pos(bbox.x, max(bbox.y - 5, 20));
 

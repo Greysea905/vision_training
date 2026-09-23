@@ -25,7 +25,7 @@ cmake --build build -j4
 ./build/task1              # 任务1：图片处理（生成 16 张图）
 ./build/task2              # 任务2：视频拟合（生成标注视频 + CSV）
 python3 scripts/plot.py    # 任务2：由 CSV 出 3 张曲线图
-./build/task3              # 任务3：能量机关识别跟踪（待完成）
+./build/task3              # 任务3：能量机关识别跟踪（YOLO ONNX + 角速度预测跟踪）
 ```
 
 ## 3. 输入输出路径
@@ -45,7 +45,7 @@ python3 scripts/plot.py    # 任务2：由 CSV 出 3 张曲线图
 | `task1_images/` | 任务 1 的 16 张处理图 |
 | `task2_fit/` | 标注视频 + 3 张曲线图 + CSV |
 | `task2_fit_result.md` | 任务 2 模型 / 参数 / 方法 / 误差说明 |
-| `task3_windmill/` | 任务 3 结果（待完成） |
+| `task3_windmill/` | 任务 3 结果（识别视频） |
 
 ## 4. 关键参数
 
@@ -189,5 +189,5 @@ S、V 下限取 43 / 46，以覆盖饱和度、亮度偏低的深红花瓣。
 | `result/task2_fit/residuals.png` | 残差曲线 |
 | `result/task2_fit/fit_data.csv` | 拟合数据（中间产物） |
 | `result/task2_fit_result.md` | 任务 2 模型 / 参数 / 方法 / 误差 |
-| `result/task3_windmill/` | 任务 3 结果（待完成） |
-| `result/task3_tracking_result.md` | 任务 3 跟踪说明（待完成） |
+| `result/task3_windmill/` | 任务 3 结果（识别视频） |
+| `result/task3_tracking_result.md` | 任务 3 跟踪说明 |

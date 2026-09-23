@@ -27,7 +27,7 @@ const double GAUSS_SIGMA = 1.5;    // 高斯滤波标准差
 
 /* 红色 HSV 双区间阈值（H: 0-180, S: 0-255, V: 0-255） */
 const Scalar RED_LOW1(0, 43, 46);       
-const Scalar RED_HIGH1(10, 255, 255);   // 低段红阈值 [0, 10]
+const Scalar RED_HIGH1(13, 255, 255);   // 低段红阈值 [0, 10]
 const Scalar RED_LOW2(170, 43, 46);     
 const Scalar RED_HIGH2(179, 255, 255); // 高段红阈值 [170, 179]
 
@@ -87,7 +87,7 @@ Mat step4_morph(const Mat& red_mask) {
     imwrite(OUT + "dilate.png", dilated);
     imwrite(OUT + "open.png", opened);
     imwrite(OUT + "close.png", closed);
-    return closed;   // 假设开运算去噪点效果最好，交给步骤④-2 
+    return closed;   // 闭运算效果最好，交给步骤④-2
 }
 
 void step4_contour(const Mat& best_mask, const Mat& img) {

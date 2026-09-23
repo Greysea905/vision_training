@@ -35,6 +35,7 @@ add_library(common
     src/common/image_utils.cpp
     src/common/video_io.cpp
     src/common/detection.cpp
+    src/common/yolo.cpp
 )
 target_include_directories(common PUBLIC include ${OpenCV_INCLUDE_DIRS})
 target_link_libraries(common PUBLIC ${OpenCV_LIBS} Eigen3::Eigen ${CERES_LIBS})

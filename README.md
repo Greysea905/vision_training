@@ -47,14 +47,40 @@ python3 scripts/plot.py    # 任务2：由 CSV 出 3 张曲线图
 | `task2_fit_result.md` | 任务 2 模型 / 参数 / 方法 / 误差说明 |
 | `task3_windmill/` | 任务 3 结果（识别视频） |
 
-## 4. 关键参数
+## 4. 项目结构
+
+```
+vision_training/
+├── CMakeLists.txt               # 统一构建三个任务（task1/task2/task3）
+├── include/common/              # 公共头：detection / image_utils / video_io / yolo
+├── src/
+│   ├── common/                  # 公共实现（含 yolo.cpp：ONNX 推理）
+│   ├── task1_image/             # 任务1 主程序
+│   ├── task2_fit/               # 任务2 主程序
+│   └── task3_windmill/          # 任务3 主程序（识别 + 角速度预测跟踪）
+├── model/
+│   └── best.onnx                # 任务3 YOLOv11n 权重（由 windmill_detection 训练导出）
+├── config/params.yaml           # 集中参数
+├── resources/                   # 输入素材（图片 + 三个视频）
+├── scripts/                     # Python 辅助脚本（plot / task3_detect）
+└── result/
+    ├── task1_images/            # 任务1 输出
+    ├── task2_fit/               # 任务2 输出
+    ├── task2_fit_result.md
+    ├── task3_windmill/          # 任务3 输出
+    │   ├── task_3/recognition_overlay.mp4
+    │   └── task_4/recognition_overlay.mp4
+    └── task3_tracking_result.md
+```
+
+## 5. 关键参数
 
 ### 任务 1
 
 | 参数 | 值 |
 |---|---|
 | 滤波核尺寸 | 均值 5×5；高斯 5×5（σ=1.5）；中值 5 |
-| 红色 HSV 阈值 | H ∈ [0,10] ∪ [170,179]；S ∈ [43,255]；V ∈ [46,255] |
+| 红色 HSV 阈值 | H ∈ [0,13] ∪ [170,179]；S ∈ [43,255]；V ∈ [46,255] |
 | 形态学核 | 20×20 椭圆（腐蚀 / 膨胀 / 开 / 闭共用） |
 | 轮廓面积阈值 | 90000 px² |
 
@@ -70,7 +96,7 @@ python3 scripts/plot.py    # 任务2：由 CSV 出 3 张曲线图
 
 ---
 
-## 5. 任务 1 分析（郁金香图片处理）
+## 6. 任务 1 分析（郁金香图片处理）
 
 ### ① 读图与颜色转换
 
@@ -178,7 +204,7 @@ S、V 下限取 43 / 46，以覆盖饱和度、亮度偏低的深红花瓣。
 
 ---
 
-## 6. 全部结果索引
+## 7. 全部结果索引
 
 | 文件 | 说明 |
 |---|---|
